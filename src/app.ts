@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import compression from 'compression';
 import path from 'path';
 import { env } from './config/environment.config';
 import { requestLogger } from './middleware/request-logger.middleware';
@@ -11,6 +12,12 @@ import apiRoutes from './routes';
 
 export const createApp = (): Application => {
   const app = express();
+
+  // HTTP Response Compression (gzip / deflate - up to 80% bandwidth reduction)
+  app.use(compression({
+    level: 6,
+    threshold: 1024,
+  }));
 
   // Security Headers
   app.use(helmet({
@@ -58,13 +65,15 @@ export const createApp = (): Application => {
   // Global Rate Limiting
   app.use('/api', apiRateLimiter);
 
-  // Serve uploads with anti-sniff security headers
+  // Serve uploads with anti-sniff security headers and 30-day client cache
   const uploadDir = path.resolve(process.cwd(), env.UPLOAD_DIR);
   app.use(
     '/uploads',
     express.static(uploadDir, {
+      maxAge: '30d',
       setHeaders: (res) => {
         res.setHeader('X-Content-Type-Options', 'nosniff');
+        res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
       },
     })
   );

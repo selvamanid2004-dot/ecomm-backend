@@ -7,6 +7,7 @@ export class ProductController {
   getProducts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const result = await this.productService.getProducts(req.query as any);
+      res.setHeader('Cache-Control', 'public, max-age=15, stale-while-revalidate=60');
       res.status(200).json({
         success: true,
         message: 'Products retrieved successfully',
@@ -21,6 +22,7 @@ export class ProductController {
   getFeatured = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const products = await this.productService.getFeaturedProducts();
+      res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=120');
       res.status(200).json({
         success: true,
         message: 'Featured products retrieved successfully',
