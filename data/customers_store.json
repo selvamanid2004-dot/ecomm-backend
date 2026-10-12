@@ -1,0 +1,101 @@
+[
+  {
+    "id": "cust-001",
+    "user_id": "usr-cust-001",
+    "phone": "+1-555-0142",
+    "loyalty_points": 491,
+    "notes": "VIP Platinum customer",
+    "created_at": "2026-10-12T11:08:27.642Z",
+    "updated_at": "2026-10-12T14:17:55.009Z"
+  },
+  {
+    "id": "cust-9580",
+    "user_id": "usr-7647-717",
+    "phone": "+1 555-0142",
+    "loyalty_points": 50,
+    "notes": null,
+    "created_at": "2026-10-12T10:47:26.873Z",
+    "updated_at": "2026-10-12T10:47:26.873Z"
+  },
+  {
+    "id": "cust-8382",
+    "user_id": "usr-7647-257",
+    "phone": "+1 555-0142",
+    "loyalty_points": 50,
+    "notes": null,
+    "created_at": "2026-10-12T10:40:27.250Z",
+    "updated_at": "2026-10-12T10:40:27.250Z"
+  },
+  {
+    "id": "cust-7647",
+    "user_id": "usr-7647-175",
+    "phone": "+1 555-4321",
+    "loyalty_points": 50,
+    "notes": null,
+    "created_at": "2026-10-12T10:36:36.479Z",
+    "updated_at": "2026-10-12T10:36:36.479Z"
+  },
+  {
+    "id": "cust-64004-348",
+    "user_id": "usr-64004-348",
+    "phone": "+1-555-0101",
+    "loyalty_points": 84,
+    "notes": null,
+    "created_at": "2026-10-12T11:09:24.004Z",
+    "updated_at": "2026-10-12T11:09:24.082Z"
+  },
+  {
+    "id": "cust-64071-780",
+    "user_id": "usr-64071-780",
+    "phone": "+1-555-0202",
+    "loyalty_points": 119,
+    "notes": null,
+    "created_at": "2026-10-12T11:09:24.071Z",
+    "updated_at": "2026-10-12T11:09:24.090Z"
+  },
+  {
+    "id": "cust-99070-194",
+    "user_id": "usr-99070-194",
+    "phone": "+1-555-0101",
+    "loyalty_points": 84,
+    "notes": null,
+    "created_at": "2026-10-12T11:09:59.071Z",
+    "updated_at": "2026-10-12T11:09:59.144Z"
+  },
+  {
+    "id": "cust-99136-809",
+    "user_id": "usr-99136-809",
+    "phone": "+1-555-0202",
+    "loyalty_points": 119,
+    "notes": null,
+    "created_at": "2026-10-12T11:09:59.136Z",
+    "updated_at": "2026-10-12T11:09:59.151Z"
+  },
+  {
+    "id": "cust-38162-176",
+    "user_id": "usr-38162-176",
+    "phone": "+1-555-0101",
+    "loyalty_points": 84,
+    "notes": null,
+    "created_at": "2026-10-12T11:25:38.162Z",
+    "updated_at": "2026-10-12T11:25:38.235Z"
+  },
+  {
+    "id": "cust-38226-102",
+    "user_id": "usr-38226-102",
+    "phone": "+1-555-0202",
+    "loyalty_points": 119,
+    "notes": null,
+    "created_at": "2026-10-12T11:25:38.226Z",
+    "updated_at": "2026-10-12T11:25:38.242Z"
+  },
+  {
+    "id": "cust-32864-889",
+    "user_id": "usr-32864-889",
+    "phone": null,
+    "loyalty_points": 50,
+    "notes": null,
+    "created_at": "2026-10-12T18:47:12.864Z",
+    "updated_at": "2026-10-12T18:47:12.864Z"
+  }
+]

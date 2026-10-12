@@ -1,0 +1,275 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Aether Pro Wireless ANC Headphones",
+    "slug": "aether-pro-wireless-anc-headphones",
+    "sku": "SKU-ATH-001",
+    "description": "Engineered with custom 45mm beryllium drivers, active noise cancellation with transparent pass-through mode, ultra-low distortion DSP, and 40 hours of continuous high-fidelity playback. Finished in aircraft-grade brushed aluminum and lambskin leather ear cushions.",
+    "short_description": "Flagship noise-canceling headphones with bespoke beryllium drivers and 40-hour battery life.",
+    "category_id": "cat-001",
+    "base_price": 349,
+    "compare_at_price": 399,
+    "cost_price": 180,
+    "stock_quantity": 35,
+    "low_stock_threshold": 5,
+    "is_active": true,
+    "is_featured": true,
+    "is_in_stock": true,
+    "created_at": "2026-10-12T11:24:50.801Z",
+    "category": {
+      "id": "cat-001",
+      "name": "Audio & Acoustics",
+      "slug": "audio-acoustics"
+    },
+    "images": [
+      {
+        "id": "img-001",
+        "product_id": "prod-001",
+        "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": true,
+        "display_order": 1
+      },
+      {
+        "id": "img-002",
+        "product_id": "prod-001",
+        "image_url": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": false,
+        "display_order": 2
+      },
+      {
+        "id": "img-003",
+        "product_id": "prod-001",
+        "image_url": "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": false,
+        "display_order": 3
+      }
+    ],
+    "variants": [
+      {
+        "id": "var-001",
+        "product_id": "prod-001",
+        "sku": "SKU-ATH-001-BLK",
+        "title": "Matte Obsidian Black",
+        "price_override": 349,
+        "stock_quantity": 20,
+        "is_active": true
+      },
+      {
+        "id": "var-002",
+        "product_id": "prod-001",
+        "sku": "SKU-ATH-001-SLV",
+        "title": "Moonlight Silver",
+        "price_override": 349,
+        "stock_quantity": 15,
+        "is_active": true
+      }
+    ],
+    "reviews": [
+      {
+        "id": "rev-001",
+        "product_id": "prod-001",
+        "customer_name": "Sophia Chen",
+        "rating": 5,
+        "comment": "The soundstage and acoustic depth are sublime. Active noise cancellation easily beats all other studio headphones I have tested.",
+        "created_at": "2026-10-12T11:24:50.801Z"
+      }
+    ]
+  },
+  {
+    "id": "prod-002",
+    "name": "Chronos Ultra Titanium Smartwatch",
+    "slug": "chronos-ultra-titanium-smartwatch",
+    "sku": "SKU-CHR-002",
+    "description": "Grade 5 aerospace titanium bezel paired with sapphire crystal display. Features dual-frequency GPS, medical-grade ECG and SpO2 tracking, depth gauge rated to 100 meters, and seamless cellular connectivity. 7-day battery endurance under full telemetry usage.",
+    "short_description": "Aerospace titanium smartwatch with sapphire glass, 100m water resistance, and ECG diagnostics.",
+    "category_id": "cat-002",
+    "base_price": 699,
+    "compare_at_price": 799,
+    "cost_price": 390,
+    "stock_quantity": 22,
+    "low_stock_threshold": 4,
+    "is_active": true,
+    "is_featured": true,
+    "is_in_stock": true,
+    "created_at": "2026-10-12T11:24:50.802Z",
+    "category": {
+      "id": "cat-002",
+      "name": "Smart Wearables",
+      "slug": "smart-wearables"
+    },
+    "images": [
+      {
+        "id": "img-004",
+        "product_id": "prod-002",
+        "image_url": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": true,
+        "display_order": 1
+      },
+      {
+        "id": "img-005",
+        "product_id": "prod-002",
+        "image_url": "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": false,
+        "display_order": 2
+      }
+    ],
+    "variants": [
+      {
+        "id": "var-003",
+        "product_id": "prod-002",
+        "sku": "SKU-CHR-002-45M",
+        "title": "45mm Titanium / Sport Band",
+        "price_override": 699,
+        "stock_quantity": 12,
+        "is_active": true
+      },
+      {
+        "id": "var-004",
+        "product_id": "prod-002",
+        "sku": "SKU-CHR-002-49M",
+        "title": "49mm Titanium / Link Bracelet",
+        "price_override": 799,
+        "stock_quantity": 10,
+        "is_active": true
+      }
+    ],
+    "reviews": [
+      {
+        "id": "rev-002",
+        "product_id": "prod-002",
+        "customer_name": "Marcus Ross",
+        "rating": 5,
+        "comment": "Grade 5 titanium feels sensational on the wrist. Battery easily lasts an entire week.",
+        "created_at": "2026-10-12T11:24:50.802Z"
+      }
+    ]
+  },
+  {
+    "id": "prod-003",
+    "name": "Kinesis Apex Mechanical Keyboard",
+    "slug": "kinesis-apex-mechanical-keyboard",
+    "sku": "SKU-KNS-003",
+    "description": "Solid CNC milled billet aluminum enclosure with gasket-mounted carbon fiber switch plate. Hot-swappable lubricated linear switches, south-facing per-key RGB, wireless 2.4GHz low latency and Bluetooth 5.2 connectivity.",
+    "short_description": "Milled aluminum mechanical keyboard with gasket mount, custom switches, and wireless trio.",
+    "category_id": "cat-003",
+    "base_price": 219,
+    "compare_at_price": 249,
+    "cost_price": 110,
+    "stock_quantity": 48,
+    "low_stock_threshold": 8,
+    "is_active": true,
+    "is_featured": true,
+    "is_in_stock": true,
+    "created_at": "2026-10-12T11:24:50.802Z",
+    "category": {
+      "id": "cat-003",
+      "name": "Workstation & Design",
+      "slug": "workstation-design"
+    },
+    "images": [
+      {
+        "id": "img-006",
+        "product_id": "prod-003",
+        "image_url": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": true,
+        "display_order": 1
+      },
+      {
+        "id": "img-007",
+        "product_id": "prod-003",
+        "image_url": "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": false,
+        "display_order": 2
+      }
+    ],
+    "variants": [
+      {
+        "id": "var-005",
+        "product_id": "prod-003",
+        "sku": "SKU-KNS-003-LIN",
+        "title": "Silent Linear Red Switches",
+        "price_override": 219,
+        "stock_quantity": 28,
+        "is_active": true
+      },
+      {
+        "id": "var-006",
+        "product_id": "prod-003",
+        "sku": "SKU-KNS-003-TAC",
+        "title": "Tactile Brown Switches",
+        "price_override": 219,
+        "stock_quantity": 20,
+        "is_active": true
+      }
+    ],
+    "reviews": []
+  },
+  {
+    "id": "prod-004",
+    "name": "Lumina Cine X Full-Frame 8K Camera",
+    "slug": "lumina-cine-x-full-frame-8k-camera",
+    "sku": "SKU-LUM-004",
+    "description": "Engineered for cinematographers, featuring a 45MP full-frame stacked CMOS sensor, 8K RAW recording at 60fps, 16 stops of dynamic range, internal ND filtration, and dual CFexpress Type B slots. Housed in a precision magnesium alloy weather-sealed chassis.",
+    "short_description": "Full-frame cinema camera with 8K RAW recording, dual base ISO, and 16-stop dynamic range.",
+    "category_id": "cat-004",
+    "base_price": 2499,
+    "compare_at_price": 2799,
+    "cost_price": 1500,
+    "stock_quantity": 14,
+    "low_stock_threshold": 3,
+    "is_active": false,
+    "is_featured": true,
+    "is_in_stock": true,
+    "created_at": "2026-10-12T11:24:50.802Z",
+    "category": {
+      "id": "cat-004",
+      "name": "Optics & Photography",
+      "slug": "optics-photography"
+    },
+    "images": [
+      {
+        "id": "img-008",
+        "product_id": "prod-004",
+        "image_url": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": true,
+        "display_order": 1
+      }
+    ],
+    "variants": [],
+    "reviews": []
+  },
+  {
+    "id": "prod-005",
+    "name": "Vanguard Full-Grain Tuscan Leather Duffle",
+    "slug": "vanguard-full-grain-tuscan-leather-duffle",
+    "sku": "SKU-VAN-005",
+    "description": "Handcrafted in Florence from vegetable-tanned Tuscan full-grain leather and solid forged brass hardware. Features water-resistant Japanese cotton lining, dedicated shoe compartment, and padded sleeve accommodating laptops up to 16 inches.",
+    "short_description": "Handcrafted vegetable-tanned Tuscan leather duffle with solid brass hardware.",
+    "category_id": "cat-005",
+    "base_price": 480,
+    "compare_at_price": 540,
+    "cost_price": 240,
+    "stock_quantity": 25,
+    "low_stock_threshold": 5,
+    "is_active": false,
+    "is_featured": true,
+    "is_in_stock": true,
+    "created_at": "2026-10-12T11:24:50.802Z",
+    "category": {
+      "id": "cat-005",
+      "name": "Lifestyle & Travel",
+      "slug": "lifestyle-travel"
+    },
+    "images": [
+      {
+        "id": "img-009",
+        "product_id": "prod-005",
+        "image_url": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=80",
+        "is_primary": true,
+        "display_order": 1
+      }
+    ],
+    "variants": [],
+    "reviews": []
+  }
+]
