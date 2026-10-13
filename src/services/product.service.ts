@@ -60,6 +60,14 @@ export class ProductService {
         list.sort((a, b) => (b.is_featured ? 1 : 0) - (a.is_featured ? 1 : 0));
       }
 
+      const isAll = params.all === 'true' || params.all === (true as any);
+      if (isAll) {
+        return {
+          products: list as any[],
+          meta: { page: 1, limit: list.length, total: list.length, totalPages: 1 },
+        };
+      }
+
       const page = Number(params.page) || 1;
       const limit = Number(params.limit) || 12;
       const total = list.length;
@@ -71,8 +79,9 @@ export class ProductService {
       };
     }
 
-    const page = Number(params.page) || 1;
-    const limit = Number(params.limit) || 12;
+    const isAll = params.all === 'true' || params.all === (true as any);
+    const page = isAll ? 1 : (Number(params.page) || 1);
+    const limit = isAll ? 10000 : (Number(params.limit) || 12);
     const skip = (page - 1) * limit;
 
     const qb = this.productRepo

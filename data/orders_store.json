@@ -1,5 +1,146 @@
 [
   {
+    "id": "ord-391398",
+    "order_number": "ORD-391398-3989",
+    "invoice_number": "INV-391398-3989",
+    "customer_id": "cust-6341",
+    "guest_email": "ananya.sharma@example.com",
+    "status": "pending",
+    "payment_status": "paid",
+    "payment_method": "credit_card",
+    "shipping_method": "FedEx Express Worldwide Air",
+    "subtotal": 698,
+    "discount_amount": 0,
+    "tax_amount": 0,
+    "shipping_fee": 0,
+    "total_amount": 698,
+    "shipping_address_json": {
+      "recipient_name": "Ananya Sharma",
+      "phone": "+91 98450 12345",
+      "street_address": "42 MG Road, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560038",
+      "country": "India"
+    },
+    "billing_address_json": {
+      "recipient_name": "Ananya Sharma",
+      "phone": "+91 98450 12345",
+      "street_address": "42 MG Road, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560038",
+      "country": "India"
+    },
+    "tracking_number": "TRK-FX-144859572",
+    "items": [
+      {
+        "id": "item-1791877391398-873",
+        "product_name": "Aether Pro Wireless ANC Headphones",
+        "sku": "SKU-ATH-001",
+        "unit_price": 349,
+        "quantity": 2,
+        "line_total": 698,
+        "product_image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80"
+      }
+    ],
+    "created_at": "2026-10-13T07:43:11.399Z"
+  },
+  {
+    "id": "ord-362003",
+    "order_number": "ORD-362002-2307",
+    "invoice_number": "INV-362002-2307",
+    "customer_id": "cust-6341",
+    "guest_email": "ananya.sharma@example.com",
+    "status": "pending",
+    "payment_status": "paid",
+    "payment_method": "credit_card",
+    "shipping_method": "FedEx Express Worldwide Air",
+    "subtotal": 698,
+    "discount_amount": 0,
+    "tax_amount": 0,
+    "shipping_fee": 0,
+    "total_amount": 698,
+    "shipping_address_json": {
+      "recipient_name": "Ananya Sharma",
+      "phone": "+91 98450 12345",
+      "street_address": "42 MG Road, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560038",
+      "country": "India"
+    },
+    "billing_address_json": {
+      "recipient_name": "Ananya Sharma",
+      "phone": "+91 98450 12345",
+      "street_address": "42 MG Road, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560038",
+      "country": "India"
+    },
+    "tracking_number": "TRK-FX-588731768",
+    "items": [
+      {
+        "id": "item-1791877362003-931",
+        "product_name": "Aether Pro Wireless ANC Headphones",
+        "sku": "SKU-ATH-001",
+        "unit_price": 349,
+        "quantity": 2,
+        "line_total": 698,
+        "product_image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80"
+      }
+    ],
+    "created_at": "2026-10-13T07:42:42.004Z"
+  },
+  {
+    "id": "ord-288742",
+    "order_number": "ORD-288740-1008",
+    "invoice_number": "INV-288740-1008",
+    "customer_id": null,
+    "guest_email": "ananya.sharma@example.com",
+    "status": "pending",
+    "payment_status": "paid",
+    "payment_method": "credit_card",
+    "shipping_method": "FedEx Express Worldwide Air",
+    "subtotal": 698,
+    "discount_amount": 0,
+    "tax_amount": 0,
+    "shipping_fee": 0,
+    "total_amount": 698,
+    "shipping_address_json": {
+      "recipient_name": "Ananya Sharma",
+      "phone": "+91 98450 12345",
+      "street_address": "42 MG Road, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560038",
+      "country": "India"
+    },
+    "billing_address_json": {
+      "recipient_name": "Ananya Sharma",
+      "phone": "+91 98450 12345",
+      "street_address": "42 MG Road, Indiranagar",
+      "city": "Bengaluru",
+      "state": "Karnataka",
+      "postal_code": "560038",
+      "country": "India"
+    },
+    "tracking_number": "TRK-FX-772133528",
+    "items": [
+      {
+        "id": "item-1791877288742-201",
+        "product_name": "Aether Pro Wireless ANC Headphones",
+        "sku": "SKU-ATH-001",
+        "unit_price": 349,
+        "quantity": 2,
+        "line_total": 698,
+        "product_image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80"
+      }
+    ],
+    "created_at": "2026-10-13T07:41:28.742Z"
+  },
+  {
     "id": "ord-675008",
     "order_number": "ORD-675007-6838",
     "customer_id": "cust-001",

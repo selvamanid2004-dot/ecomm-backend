@@ -273,6 +273,7 @@ export const mockStore = {
     {
       id: 'ord-001',
       order_number: 'ORD-2026-90412',
+      invoice_number: 'INV-2026-90412',
       customer_id: 'cust-001',
       guest_email: 'sophia.chen@example.com',
       status: 'delivered',

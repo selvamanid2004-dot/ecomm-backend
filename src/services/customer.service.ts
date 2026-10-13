@@ -74,14 +74,27 @@ export class CustomerService {
         );
       }
 
+      const isAll = (params as any).all === 'true' || (params as any).all === true;
+      if (isAll) {
+        return {
+          customers: filtered,
+          meta: { page: 1, limit: filtered.length, total: filtered.length, totalPages: 1 },
+        };
+      }
+
+      const page = Number(params.page) || 1;
+      const limit = Number(params.limit) || 20;
+      const paginated = filtered.slice((page - 1) * limit, page * limit);
+
       return {
-        customers: filtered,
-        meta: { page: 1, limit: 20, total: filtered.length, totalPages: 1 },
+        customers: paginated,
+        meta: { page, limit, total: filtered.length, totalPages: Math.ceil(filtered.length / limit) },
       };
     }
 
-    const page = Number(params.page) || 1;
-    const limit = Number(params.limit) || 20;
+    const isAll = (params as any).all === 'true' || (params as any).all === true;
+    const page = isAll ? 1 : (Number(params.page) || 1);
+    const limit = isAll ? 10000 : (Number(params.limit) || 20);
     const skip = (page - 1) * limit;
 
     const qb = this.customerRepo

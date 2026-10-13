@@ -24,6 +24,9 @@ export class Order {
   @Column({ type: 'varchar', length: 50, unique: true })
   order_number!: string;
 
+  @Column({ type: 'varchar', length: 50, nullable: true })
+  invoice_number?: string | null;
+
   @Column({ type: 'varchar', length: 36, nullable: true })
   customer_id?: string | null;
 

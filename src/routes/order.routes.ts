@@ -8,7 +8,7 @@ const router = Router();
 const controller = new OrderController();
 
 router.post('/checkout', optionalAuth, validateRequest({ body: checkoutSchema }), controller.createOrder);
-router.get('/my-orders', authenticateJwt, controller.getMyOrders);
+router.get('/my-orders', optionalAuth, controller.getMyOrders);
 router.get('/:id', optionalAuth, controller.getOrderById);
 
 export default router;

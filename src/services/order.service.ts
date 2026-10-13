@@ -38,6 +38,7 @@ export class OrderService {
     items?: Array<{ product_id: string; quantity: number; unit_price?: number }>;
   }) {
     const orderNumber = `ORD-${Date.now().toString().slice(-6)}-${Math.floor(1000 + Math.random() * 9000)}`;
+    const invoiceNumber = `INV-${orderNumber.replace('ORD-', '')}`;
     loadOrdersFromDisk();
     loadUsersToDisk();
     loadCustomersToDisk();
@@ -120,6 +121,7 @@ export class OrderService {
       const newOrder: any = {
         id: orderId,
         order_number: orderNumber,
+        invoice_number: invoiceNumber,
         customer_id: customerId,
         guest_email: guestEmail || (data.shippingAddress?.email || null),
         status: 'pending',
@@ -227,6 +229,7 @@ export class OrderService {
       const order = manager.create(Order, {
         id: orderId,
         order_number: orderNumber,
+        invoice_number: invoiceNumber,
         customer_id: data.customerId || null,
         guest_email: data.guestEmail || null,
         status: 'pending' as OrderStatus,
@@ -292,6 +295,9 @@ export class OrderService {
     if (!AppDataSource.isInitialized) {
       const ord = mockStore.orders.find((o) => o.id === id || o.order_number === id);
       if (!ord) throw new NotFoundError(`Order not found: ${id}`);
+      if (!ord.invoice_number) {
+        ord.invoice_number = `INV-${ord.order_number?.replace('ORD-', '') || ord.id}`;
+      }
       return ord as any;
     }
 
@@ -302,6 +308,10 @@ export class OrderService {
 
     if (!order) {
       throw new NotFoundError(`Order not found: ${id}`);
+    }
+
+    if (!order.invoice_number) {
+      order.invoice_number = `INV-${order.order_number?.replace('ORD-', '') || order.id}`;
     }
 
     return order;
@@ -329,7 +339,7 @@ export class OrderService {
         if (u) targetEmail = u.email.trim().toLowerCase();
       }
 
-      return mockStore.orders.filter((o) => {
+      const list = mockStore.orders.filter((o) => {
         const orderEmail = (o.guest_email || (o.shipping_address_json as any)?.email || '').trim().toLowerCase();
         const matchesEmail = Boolean(targetEmail && orderEmail && orderEmail === targetEmail);
         const matchesCustomer = Boolean(
@@ -342,30 +352,59 @@ export class OrderService {
         );
         return matchesEmail || matchesCustomer;
       }) as any[];
+
+      list.forEach((o) => {
+        if (!o.invoice_number) {
+          o.invoice_number = `INV-${o.order_number?.replace('ORD-', '') || o.id}`;
+        }
+      });
+      return list;
     }
 
     const whereConditions: any[] = [];
     if (customerId) whereConditions.push({ customer_id: customerId });
     if (email) whereConditions.push({ guest_email: email });
 
-    return this.orderRepo.find({
+    const orders = await this.orderRepo.find({
       where: whereConditions,
       relations: ['items'],
       order: { created_at: 'DESC' },
     });
+
+    orders.forEach((o) => {
+      if (!o.invoice_number) {
+        o.invoice_number = `INV-${o.order_number?.replace('ORD-', '') || o.id}`;
+      }
+    });
+
+    return orders;
   }
 
   async getAllOrders(params: any) {
     loadOrdersFromDisk();
+    const isAll = params.all === 'true' || params.all === true;
 
     if (!AppDataSource.isInitialized) {
       let list = [...mockStore.orders];
       if (params.status) list = list.filter((o) => o.status === params.status);
-      return { orders: list as any[], meta: { page: 1, limit: 20, total: list.length, totalPages: 1 } };
+      list.forEach((o) => {
+        if (!o.invoice_number) {
+          o.invoice_number = `INV-${o.order_number?.replace('ORD-', '') || o.id}`;
+        }
+      });
+
+      if (isAll) {
+        return { orders: list as any[], meta: { page: 1, limit: list.length, total: list.length, totalPages: 1 } };
+      }
+
+      const page = Number(params.page) || 1;
+      const limit = Number(params.limit) || 20;
+      const paginated = list.slice((page - 1) * limit, page * limit);
+      return { orders: paginated as any[], meta: { page, limit, total: list.length, totalPages: Math.ceil(list.length / limit) } };
     }
 
-    const page = Number(params.page) || 1;
-    const limit = Number(params.limit) || 20;
+    const page = isAll ? 1 : (Number(params.page) || 1);
+    const limit = isAll ? 10000 : (Number(params.limit) || 20);
     const skip = (page - 1) * limit;
 
     const qb = this.orderRepo
@@ -380,6 +419,12 @@ export class OrderService {
 
     qb.orderBy('order.created_at', 'DESC').skip(skip).take(limit);
     const [orders, total] = await qb.getManyAndCount();
+
+    orders.forEach((o) => {
+      if (!o.invoice_number) {
+        o.invoice_number = `INV-${o.order_number?.replace('ORD-', '') || o.id}`;
+      }
+    });
 
     return {
       orders,
