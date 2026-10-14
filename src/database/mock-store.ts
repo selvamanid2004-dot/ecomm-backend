@@ -328,22 +328,33 @@ const CONTENT_FILE = path.join(DATA_DIR, 'content_store.json');
 const USERS_FILE = path.join(DATA_DIR, 'users_store.json');
 const CUSTOMERS_FILE = path.join(DATA_DIR, 'customers_store.json');
 
+let lastOrdersDiskLoad = 0;
+let lastContentDiskLoad = 0;
+let lastUsersDiskLoad = 0;
+let lastCustomersDiskLoad = 0;
+
 export function saveOrdersToDisk(): void {
   try {
     if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(ORDERS_FILE, JSON.stringify(mockStore.orders, null, 2), 'utf-8');
+    lastOrdersDiskLoad = Date.now();
   } catch (err) {
     console.error('Failed to save orders to disk:', err);
   }
 }
 
-export function loadOrdersFromDisk(): void {
+export function loadOrdersFromDisk(force = false): void {
+  const now = Date.now();
+  if (!force && mockStore.orders.length > 0 && now - lastOrdersDiskLoad < 30000) {
+    return;
+  }
   try {
     if (fs.existsSync(ORDERS_FILE)) {
       const raw = fs.readFileSync(ORDERS_FILE, 'utf-8');
       const data = JSON.parse(raw);
       if (Array.isArray(data) && data.length > 0) {
         mockStore.orders = data;
+        lastOrdersDiskLoad = now;
       }
     }
   } catch (err) {
@@ -355,18 +366,24 @@ export function saveContentToDisk(): void {
   try {
     if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(CONTENT_FILE, JSON.stringify(mockStore.siteContent, null, 2), 'utf-8');
+    lastContentDiskLoad = Date.now();
   } catch (err) {
     console.error('Failed to save content to disk:', err);
   }
 }
 
-export function loadContentFromDisk(): void {
+export function loadContentFromDisk(force = false): void {
+  const now = Date.now();
+  if (!force && now - lastContentDiskLoad < 30000) {
+    return;
+  }
   try {
     if (fs.existsSync(CONTENT_FILE)) {
       const raw = fs.readFileSync(CONTENT_FILE, 'utf-8');
       const data = JSON.parse(raw);
       if (data && typeof data === 'object') {
         mockStore.siteContent = { ...mockStore.siteContent, ...data };
+        lastContentDiskLoad = now;
       }
     }
   } catch (err) {
@@ -378,12 +395,17 @@ export function saveUsersToDisk(): void {
   try {
     if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(USERS_FILE, JSON.stringify(mockStore.users, null, 2), 'utf-8');
+    lastUsersDiskLoad = Date.now();
   } catch (err) {
     console.error('Failed to save users to disk:', err);
   }
 }
 
-export function loadUsersToDisk(): void {
+export function loadUsersToDisk(force = false): void {
+  const now = Date.now();
+  if (!force && mockStore.users.length > 0 && now - lastUsersDiskLoad < 30000) {
+    return;
+  }
   try {
     if (fs.existsSync(USERS_FILE)) {
       const raw = fs.readFileSync(USERS_FILE, 'utf-8');
@@ -395,9 +417,11 @@ export function loadUsersToDisk(): void {
           data.unshift(mockStore.users[0]);
         }
         mockStore.users = data;
+        lastUsersDiskLoad = now;
       }
     } else {
       saveUsersToDisk();
+      lastUsersDiskLoad = now;
     }
   } catch (err) {
     console.error('Failed to load users from disk:', err);
@@ -408,21 +432,28 @@ export function saveCustomersToDisk(): void {
   try {
     if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(CUSTOMERS_FILE, JSON.stringify(mockStore.customers, null, 2), 'utf-8');
+    lastCustomersDiskLoad = Date.now();
   } catch (err) {
     console.error('Failed to save customers to disk:', err);
   }
 }
 
-export function loadCustomersToDisk(): void {
+export function loadCustomersToDisk(force = false): void {
+  const now = Date.now();
+  if (!force && mockStore.customers.length > 0 && now - lastCustomersDiskLoad < 30000) {
+    return;
+  }
   try {
     if (fs.existsSync(CUSTOMERS_FILE)) {
       const raw = fs.readFileSync(CUSTOMERS_FILE, 'utf-8');
       const data = JSON.parse(raw);
       if (Array.isArray(data) && data.length > 0) {
         mockStore.customers = data;
+        lastCustomersDiskLoad = now;
       }
     } else {
       saveCustomersToDisk();
+      lastCustomersDiskLoad = now;
     }
   } catch (err) {
     console.error('Failed to load customers from disk:', err);
@@ -475,28 +506,36 @@ export function syncUsersFromOrders(): void {
 
 const PRODUCTS_FILE = path.join(DATA_DIR, 'products_store.json');
 
+let lastProductsDiskLoad = 0;
+
 export function saveProductsToDisk(): void {
   try {
     if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
     fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(mockStore.products, null, 2), 'utf-8');
+    lastProductsDiskLoad = Date.now();
   } catch (err) {
     console.error('Failed to save products to disk:', err);
   }
 }
 
-export function loadProductsToDisk(): void {
+export function loadProductsToDisk(force = false): void {
+  const now = Date.now();
+  if (!force && mockStore.products.length > 0 && now - lastProductsDiskLoad < 30000) {
+    return;
+  }
   try {
     if (fs.existsSync(PRODUCTS_FILE)) {
       const raw = fs.readFileSync(PRODUCTS_FILE, 'utf-8');
       const data = JSON.parse(raw);
       if (Array.isArray(data) && data.length > 0) {
-        // Ensure all products are loaded, ensuring none are accidentally left inactive if they are core products
         mockStore.products = data;
+        lastProductsDiskLoad = now;
         return;
       }
     }
     // If file doesn't exist, save seed products
     saveProductsToDisk();
+    lastProductsDiskLoad = now;
   } catch (err) {
     console.error('Failed to load products from disk:', err);
   }

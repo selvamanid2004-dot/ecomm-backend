@@ -7,6 +7,7 @@ export class CategoryController {
   getAll = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const categories = await this.categoryService.getAllCategories();
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
       res.status(200).json({
         success: true,
         message: 'Categories retrieved successfully',
@@ -20,6 +21,7 @@ export class CategoryController {
   getBySlug = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const category = await this.categoryService.getCategoryBySlug(req.params.slug);
+      res.setHeader('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
       res.status(200).json({
         success: true,
         message: 'Category retrieved successfully',

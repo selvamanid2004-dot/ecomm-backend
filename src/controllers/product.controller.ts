@@ -36,6 +36,7 @@ export class ProductController {
   getProductByIdentifier = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const product = await this.productService.getProductBySlugOrId(req.params.identifier);
+      res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=120');
       res.status(200).json({
         success: true,
         message: 'Product retrieved successfully',
@@ -50,6 +51,7 @@ export class ProductController {
     try {
       const { categoryId, excludeId } = req.query as { categoryId: string; excludeId: string };
       const related = await this.productService.getRelatedProducts(categoryId, excludeId);
+      res.setHeader('Cache-Control', 'public, max-age=30, stale-while-revalidate=120');
       res.status(200).json({
         success: true,
         message: 'Related products retrieved successfully',

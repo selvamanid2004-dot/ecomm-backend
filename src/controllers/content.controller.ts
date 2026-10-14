@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { mockStore } from '../database/mock-store';
+import { mockStore, saveContentToDisk } from '../database/mock-store';
 
 export class ContentController {
   getStorefrontContent = async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -20,6 +20,7 @@ export class ContentController {
         ...mockStore.siteContent,
         ...req.body,
       };
+      saveContentToDisk();
 
       res.status(200).json({
         success: true,
