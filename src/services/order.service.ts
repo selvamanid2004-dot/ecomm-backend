@@ -387,6 +387,15 @@ export class OrderService {
     if (!AppDataSource.isInitialized) {
       let list = [...mockStore.orders];
       if (params.status) list = list.filter((o) => o.status === params.status);
+      if (params.search) {
+        const s = params.search.toLowerCase().trim();
+        list = list.filter((o) => {
+          const num = (o.order_number || o.id || '').toLowerCase();
+          const email = (o.guest_email || (o.shipping_address_json as any)?.email || '').toLowerCase();
+          const name = ((o.shipping_address_json as any)?.recipient_name || '').toLowerCase();
+          return num.includes(s) || email.includes(s) || name.includes(s);
+        });
+      }
       list.forEach((o) => {
         if (!o.invoice_number) {
           o.invoice_number = `INV-${o.order_number?.replace('ORD-', '') || o.id}`;
@@ -415,6 +424,13 @@ export class OrderService {
 
     if (params.status) {
       qb.andWhere('order.status = :status', { status: params.status });
+    }
+
+    if (params.search) {
+      qb.andWhere(
+        '(order.order_number ILIKE :search OR order.guest_email ILIKE :search OR user.first_name ILIKE :search OR user.last_name ILIKE :search OR user.email ILIKE :search)',
+        { search: `%${params.search}%` }
+      );
     }
 
     qb.orderBy('order.created_at', 'DESC').skip(skip).take(limit);
