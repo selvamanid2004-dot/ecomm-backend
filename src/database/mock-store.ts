@@ -268,6 +268,17 @@ export const mockStore = {
 
   carts: {} as Record<string, { items: any[]; couponCode: string | null; discountAmount: number }>,
   wishlists: {} as Record<string, string[]>,
+  payments: [] as Array<{
+    id: string;
+    order_id: string;
+    payment_method: string;
+    transaction_reference: string;
+    amount: number;
+    currency: string;
+    status: 'initiated' | 'pending' | 'succeeded' | 'failed' | 'refunded';
+    gateway_response?: any;
+    created_at: Date;
+  }>,
 
   orders: [
     {

@@ -204,5 +204,29 @@
     "is_active": true,
     "created_at": "2026-10-14T06:54:25.677Z",
     "updated_at": "2026-10-14T06:54:25.677Z"
+  },
+  {
+    "id": "usr-61368-240",
+    "email": "razorpay.customer.1791975661297@example.com",
+    "password_hash": "$2a$10$fYm.rGitndsi0Oo.BoAt3OtAv1jrdkAzOFChYy/m5u6QtJtMuERxG",
+    "first_name": "Customer",
+    "last_name": "",
+    "phone": null,
+    "role": "customer",
+    "is_active": true,
+    "created_at": "2026-10-14T11:01:01.368Z",
+    "updated_at": "2026-10-14T11:01:01.368Z"
+  },
+  {
+    "id": "usr-07665-446",
+    "email": "razorpay.customer.1791975707575@example.com",
+    "password_hash": "$2a$10$h1N/pIYqHfW9adE/VD/RA.FxiX0GFMD/jYL2MNHfGTvPj.JQhx5eS",
+    "first_name": "Customer",
+    "last_name": "",
+    "phone": null,
+    "role": "customer",
+    "is_active": true,
+    "created_at": "2026-10-14T11:01:47.665Z",
+    "updated_at": "2026-10-14T11:01:47.665Z"
   }
 ]

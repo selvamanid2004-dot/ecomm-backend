@@ -8,6 +8,7 @@ import orderRoutes from './order.routes';
 import customerRoutes from './customer.routes';
 import adminRoutes from './admin.routes';
 import contentRoutes from './content.routes';
+import paymentRoutes from './payment.routes';
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router.use('/wishlist', wishlistRoutes);
 router.use('/orders', orderRoutes);
 router.use('/customers', customerRoutes);
 router.use('/content', contentRoutes);
+router.use('/payments', paymentRoutes);
 router.use('/admin', adminRoutes);
 
 // Health check endpoint

@@ -24,6 +24,8 @@ const environmentSchema = z.object({
   LOG_DIR: z.string().default('logs'),
   UPLOAD_DIR: z.string().default('uploads'),
   MAX_FILE_SIZE: z.coerce.number().default(5242880),
+  RAZORPAY_KEY_ID: z.string().default('rzp_test_TnlFk4EckH9Hw2'),
+  RAZORPAY_KEY_SECRET: z.string().default('eosp5ORWLmoA3OuDQUx5ed3r'),
 }).refine(
   (data) => {
     if (data.NODE_ENV === 'production') {
